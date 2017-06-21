@@ -1,0 +1,51 @@
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        
+        <!-- H2 database configuration -->
+        <property name="hibernate.connection.driver_class">org.h2.Driver</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/hibernate</property>
+        
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+        
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <!-- SQL Dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+        
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        
+        <!-- Second-level cache -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        
+        <!-- Names of the annotated entity class -->
+        <mapping class="com.kushal.hibernate.UserDetails"/>
+        <mapping class="com.kushal.hibernate.EmployeeDetails"/>
+        <mapping class="com.kushal.hibernate.EmployeeOrg"/>
+        <mapping class="com.kushal.hibernate.EmployeeProjects"/>
+        <mapping class="com.kushal.hibernate.Student"/>
+        <mapping class="com.kushal.hibernate.Book"/>
+        <mapping class="com.kushal.hibernate.inheritance.Parent"/>
+        <mapping class="com.kushal.hibernate.inheritance.Son"/>
+        <mapping class="com.kushal.hibernate.inheritance.Daughter"/>
+        <mapping class="com.kushal.hibernate.crud.CrudUser"/>
+        <mapping class="com.kushal.hibernate.hql.HqlUser"/>
+        <mapping class="com.kushal.hibernate.hql.HqlPerson"/>
+        <mapping class="com.kushal.hibernate.hql.HqlEmployee"/>
+        
+    </session-factory>
+</hibernate-configuration>
